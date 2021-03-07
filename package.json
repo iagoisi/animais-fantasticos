@@ -1,13 +1,11 @@
 {
-  "name": "animals-fetch",
+  "name": "animals-fantastivos",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
   "scripts": {
     "biuld": "webpack --mode production",
     "dev": "webpack --mode development --watch"
   },
-  "author": "",
   "description": "",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
