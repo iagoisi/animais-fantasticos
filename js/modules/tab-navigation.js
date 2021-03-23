@@ -32,6 +32,7 @@ export default class NavigationToTab {
             this.activeTab(0);
             this.addTabNavEvent();
         } 
+        return this;
     }
 
 }
