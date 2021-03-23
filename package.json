@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "biuld": "webpack --mode production",
+    "build": "webpack --mode production",
     "dev": "webpack --mode development --watch"
   },
   "description": "",
