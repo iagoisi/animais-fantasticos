@@ -1,29 +1,49 @@
-export default function initModal() {
+export default class Modal {
+    constructor(buttonOpen, buttonClose, containerModal) {
+        this.buttonOpen = document.querySelector(buttonOpen);
+        this.buttonClose = document.querySelector(buttonClose);
+        this.containerModal = document.querySelector(containerModal);   
 
-const buttonOpen = document.querySelector("[data-modal='open']");
-const buttonClose = document.querySelector("[data-modal='close']");
-const containerModal = document.querySelector("[data-modal='container']");
-const classe = "ativo"
+            // bind this ao callback para
+            // fazer referencia ao objeto 
+            // da classe
+        this.eventToggleModal = this.eventToggleModal.bind(this);
+        this.clickOutModal = this.clickOutModal.bind(this);
+    }
 
-function toggleModal(event) {
-    event.preventDefault();
-    containerModal.classList.toggle(classe);
+
+
+    // abre e fecha o modal
+    toggleModal() {
+        this.containerModal.classList.toggle("active");
+    }
+    
+
+    // adiciona os eventos de toggle no modal
+    eventToggleModal(event) {
+        event.preventDefault();
+        this.toggleModal();
+    }
+
+    // fecha modal ao clicar do lado de fora
+    clickOutModal(event) {
+        if(event.target === this.containerModal)
+            this.toggleModal(event);
+    }
+
+    // adiciona os eventos de click aos
+    // elementos modal
+    addModalEvents() {
+        this.buttonOpen.addEventListener("click", this.eventToggleModal);
+        this.buttonClose.addEventListener("click", this.eventToggleModal);
+        this.containerModal.addEventListener("click", this.clickOutModal);
+    }
+
+    init(){
+        if(this.buttonOpen && this.buttonClose && this.containerModal){
+            this.addModalEvents();
+        }
+        return this;
+    }
+
 }
-
-function clickOutModal(event) {
-    if(event.target === this)
-        toggleModal(event);
-}
-
-if(buttonOpen && buttonClose && containerModal) {
-
-
-
-
-
-    buttonOpen.addEventListener("click", toggleModal);
-    buttonClose.addEventListener("click", toggleModal);
-    containerModal.addEventListener("click", clickOutModal);
-}
-}
-
