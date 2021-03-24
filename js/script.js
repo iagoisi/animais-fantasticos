@@ -7,7 +7,7 @@ import initDropdownMenu from "./modules/dropdown-menu.js"
 import initMenuMobile from "./modules/menu-mobile.js"
 import initOpeningHours from "./modules/funcionamento.js"
 import fetchAnimals from "./modules/fetch-animals.js"
-import initFetchBitcoin from "./modules/fetch-bitcoin.js"
+import fetchBitcoin from "./modules/fetch-bitcoin.js"
 import initAnimationScroll from "./modules/animation-to-scroll.js"
 
 
@@ -32,7 +32,6 @@ initAnimationScroll();
 initDropdownMenu();
 initMenuMobile();
 initOpeningHours();
-initFetchBitcoin();
 
 fetchAnimals('../../animals-api.json', '.numbers-grid');
-
+fetchBitcoin("https://blockchain.info/ticker", ".btc-price");
