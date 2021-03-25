@@ -9,4 +9,3 @@ export default function initFetchBitcoin(url, target) {
     }).catch(erro => console.log(Error(erro)));    
 
 }
-// ".btc-price"
