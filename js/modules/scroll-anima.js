@@ -5,27 +5,47 @@ export default class ScrollAnima {
 
         this.classActive = "active";
 
-        this.animaScroll = this.animaScroll.bind(this);
+        this.checkDistance = this.checkDistance.bind(this);
     }
 
-    
-    animaScroll() {
-        console.log(this.sections);
-        this.sections.forEach((section) => {
-            const sectionTop = section.getBoundingClientRect().top;
-            const isSectionVisible = (sectionTop - this.partWindow) < 0;
-            if(isSectionVisible){
-                section.classList.add(this.classActive);
+    // pega a distancia de cada item em 
+    // em relação ao topo do site
+    getDistance() {
+        this.distance = [...this.sections].map((section) => {
+            const offset = section.offsetTop;
+            return {
+                element: section,
+                offset: offset - Math.floor(this.partWindow),
+            };
+        })
+    };
+
+    // verifica a distância de cada objeto
+    // em relação ao sroll do site
+    checkDistance() {
+        this.distance.forEach((item) => {
+            if(window.pageYOffset > item.offset) {
+                item.element.classList.add(this.classActive);
             }
-             else if(section.classList.contains(this.classActive)) {
-                section.classList.remove(this.classActive);
+             else if(item.element.classList.contains(this.classActive)) {
+                item.element.classList.remove(this.classActive);
              }
-        });
+            
+        })
     }
 
     init() {
-        this.animaScroll();
-        window.addEventListener("scroll", this.animaScroll);
+        if (this.sections.length) {
+            this.getDistance();
+            this.checkDistance();
+            window.addEventListener("scroll", this.checkDistance);
+        }
+        return this;
+    }
+    
+    // remove o event Scroll
+    stop() {
+        window.removeEventListener("scroll", this.checkDistance);
     }
 }
 
