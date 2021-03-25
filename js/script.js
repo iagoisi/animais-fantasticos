@@ -8,7 +8,7 @@ import initMenuMobile from "./modules/menu-mobile.js"
 import initOpeningHours from "./modules/funcionamento.js"
 import fetchAnimals from "./modules/fetch-animals.js"
 import fetchBitcoin from "./modules/fetch-bitcoin.js"
-import initAnimationScroll from "./modules/animation-to-scroll.js"
+import ScrollAnima from "./modules/scroll-anima.js"
 
 
 const scrollSuave = new ScrollSuave('[data-menu="suave"] a[href^="#"]');
@@ -26,9 +26,9 @@ modal.init();
 const tooltip = new Tooltip("[data-tooltip]");
 tooltip.init();
 
+const scrollAnima = new ScrollAnima("[data-anime='scroll']");
+scrollAnima.init();
 
-
-initAnimationScroll();
 initDropdownMenu();
 initMenuMobile();
 initOpeningHours();
