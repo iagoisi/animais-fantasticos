@@ -25,7 +25,6 @@ export default class ScrollAnima {
     // verifica a distância de cada objeto
     // em relação ao sroll do site
     checkDistance() {
-        console.log("teste");
         this.distance.forEach((item) => {
             if(window.pageYOffset > item.offset) {
                 item.element.classList.add(this.classActive);
