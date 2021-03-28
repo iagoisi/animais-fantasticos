@@ -1,3 +1,5 @@
+import debounce from './debounce.js';
+
 export default class ScrollAnima {
     constructor(sections) {
         this.sections = document.querySelectorAll(sections);
@@ -5,7 +7,7 @@ export default class ScrollAnima {
 
         this.classActive = "active";
 
-        this.checkDistance = this.checkDistance.bind(this);
+        this.checkDistance = debounce(this.checkDistance.bind(this), 50);
     }
 
     // pega a distancia de cada item em 
@@ -23,6 +25,7 @@ export default class ScrollAnima {
     // verifica a distância de cada objeto
     // em relação ao sroll do site
     checkDistance() {
+        console.log("teste");
         this.distance.forEach((item) => {
             if(window.pageYOffset > item.offset) {
                 item.element.classList.add(this.classActive);
