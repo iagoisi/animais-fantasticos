@@ -40,5 +40,5 @@ funcionamento.init();
 
 
 
-fetchAnimals('../../animals-api.json', '.numbers-grid');
+fetchAnimals('./animals-api.json', '.numbers-grid');
 fetchBitcoin("https://blockchain.info/ticker", ".btc-price");
